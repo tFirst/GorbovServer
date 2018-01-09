@@ -11,5 +11,5 @@ public interface ResultRepository extends CrudRepository<Result, Long> {
 
     Result findResultById(Integer id);
 
-    Result findResByUserId(Integer userId);
+    Result findResultByUserId(Integer userId);
 }

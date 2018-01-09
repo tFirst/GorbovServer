@@ -1,7 +1,7 @@
 package com.server.gorbov.controller;
 
 import com.server.gorbov.common.state.StateMain;
-import com.server.gorbov.service.UserService;
+import com.server.gorbov.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

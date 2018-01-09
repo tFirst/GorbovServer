@@ -1,4 +1,4 @@
-package com.server.gorbov.service;
+package com.server.gorbov.service.user;
 
 import com.server.gorbov.Codes;
 import com.server.gorbov.common.state.StateMain;
