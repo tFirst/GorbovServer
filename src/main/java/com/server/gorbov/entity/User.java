@@ -17,10 +17,12 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @Column(name = "user_id")
+    private Integer userId;
     private String name;
     private String password;
 
-
-    private Integer role;
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 }
