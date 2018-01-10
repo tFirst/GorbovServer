@@ -35,6 +35,8 @@ public class UserServiceImpl implements UserService {
             stateMain.setErrorCode(Codes.SUCCESS);
         }
 
+        stateMain.setUser(user);
+
         return stateMain;
     }
 

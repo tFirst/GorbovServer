@@ -26,8 +26,8 @@ public class Auth {
     }
 
     @RequestMapping(path = "/register", method = RequestMethod.GET)
-    public String register(@RequestParam String name,
+    public StateMain register(@RequestParam String name,
                               @RequestParam String password) {
-        return userService.register(name, password).toString();
+        return userService.register(name, password);
     }
 }
