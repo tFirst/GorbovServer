@@ -21,8 +21,5 @@ public class User {
     private Integer userId;
     private String name;
     private String password;
-
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    private Role role;
+    private Integer roleId;
 }

@@ -24,4 +24,10 @@ public class Auth {
                           @RequestParam String password) {
         return userService.auth(name, password);
     }
+
+    @RequestMapping(path = "/register", method = RequestMethod.GET)
+    public String register(@RequestParam String name,
+                              @RequestParam String password) {
+        return userService.register(name, password).toString();
+    }
 }

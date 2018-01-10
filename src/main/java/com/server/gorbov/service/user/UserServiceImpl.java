@@ -37,4 +37,46 @@ public class UserServiceImpl implements UserService {
 
         return stateMain;
     }
+
+    @Override
+    public StateMain register(String userName, String userPassword) {
+        StateMain stateMain = new StateMain();
+
+        User user = userRepository.findUserByName(userName);
+
+        if (user != null) {
+            stateMain.setErrorCode(Codes.USER_ALREADY_EXIST);
+            return stateMain;
+        }
+
+        user = new User();
+        user.setName(userName);
+        user.setPassword(userPassword);
+        user.setRoleId(1);
+
+        userRepository.save(user);
+
+        stateMain.setUser(user);
+
+        return stateMain;
+    }
+
+    @Override
+    public StateMain updUserRole(String userName, Integer role) {
+        StateMain stateMain = new StateMain();
+
+        User user = userRepository.findUserByName(userName);
+        if (user == null) {
+            stateMain.setErrorCode(Codes.USER_NOT_EXIST);
+            return stateMain;
+        }
+
+        user.setRoleId(role);
+        userRepository.save(user);
+
+        stateMain.setErrorCode(Codes.SUCCESS);
+        stateMain.setUser(user);
+
+        return stateMain;
+    }
 }

@@ -1,12 +1,14 @@
 package com.server.gorbov.service.result;
 
+import com.server.gorbov.common.state.StateMain;
 import com.server.gorbov.entity.Result;
-
-import java.util.Collection;
+import com.server.gorbov.entity.User;
 
 public interface ResultService {
 
-    Collection<Result> findAll();
+    StateMain findAllResults();
 
     Result findResultByUserId(Integer userId);
+
+    StateMain saveResult(User user, Result result);
 }
