@@ -21,6 +21,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getUserById(Integer userId) {
+        return userRepository.findUserByUserId(userId);
+    }
+
+    @Override
     public StateMain auth(String userName, String userPassword) {
         StateMain stateMain = new StateMain();
 
@@ -54,7 +59,7 @@ public class UserServiceImpl implements UserService {
         user = new User();
         user.setName(userName);
         user.setPassword(userPassword);
-        user.setRoleId(1);
+        user.setRoleId(2);
 
         userRepository.save(user);
 

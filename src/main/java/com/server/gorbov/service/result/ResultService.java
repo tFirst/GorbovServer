@@ -8,7 +8,7 @@ public interface ResultService {
 
     StateMain findAllResults();
 
-    Result findResultByUserId(Integer userId);
+    StateMain findResultsByUserId(Integer userId);
 
     StateMain saveResult(User user, Result result);
 }

@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.Builder;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Builder
 @Getter
@@ -11,9 +12,10 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
+@ToString
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

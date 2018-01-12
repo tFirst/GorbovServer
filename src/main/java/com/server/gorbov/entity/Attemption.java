@@ -13,12 +13,16 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @ToString
 @Entity
-@Table(name = "roles")
-public class Role {
+@Table(name = "attemption")
+public class Attemption {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "role_id")
-    private Integer roleId;
-    private String roleName;
+    @Column(name = "id")
+    private Long id;
+
+    private Integer stage;
+    private Integer stageTimeStart;
+    private Integer stageTimeEnd;
+    private Integer score;
 }

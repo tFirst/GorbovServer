@@ -1,31 +1,39 @@
 package com.server.gorbov.controller;
 
+import com.server.gorbov.common.state.StateMain;
 import com.server.gorbov.entity.Result;
 import com.server.gorbov.entity.User;
 import com.server.gorbov.service.result.ResultService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.server.gorbov.service.user.UserService;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/result")
 public class ResultController {
 
-    final ResultService resultService;
+    private final ResultService resultService;
+    private final UserService userService;
 
-    public ResultController(ResultService resultService) {
+    public ResultController(ResultService resultService, UserService userService) {
         this.resultService = resultService;
+        this.userService = userService;
     }
 
     @RequestMapping(path = "/getAll", method = RequestMethod.GET)
-    public String getAllResults() {
-        return resultService.findAllResults().toString();
+    public StateMain getAllResults() {
+        return resultService.findAllResults();
+    }
+
+    @RequestMapping(path = "/getForUser", method = RequestMethod.GET)
+    public StateMain getForUser(@RequestParam Integer userId) {
+        return resultService.findResultsByUserId(userId);
     }
 
     @RequestMapping(path = "/save", method = RequestMethod.POST)
-    public String saveResult(@RequestParam User user,
-                             @RequestParam Result result) {
-        return resultService.saveResult(user, result).toString();
+    public StateMain saveResult(@RequestParam Integer userId,
+                             @RequestBody Result result) {
+        System.out.println(userId);
+        User user = userService.getUserById(userId);
+        return resultService.saveResult(user, result);
     }
 }
